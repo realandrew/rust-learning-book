@@ -14,6 +14,7 @@
   "devDependencies": {
     "@sveltejs/vite-plugin-svelte": "^3.0.0",
     "@tsconfig/svelte": "^5.0.0",
+    "@types/prismjs": "^1.26.5",
     "autoprefixer": "^10.4.0",
     "postcss": "^8.4.0",
     "svelte": "^4.0.0",
@@ -24,10 +25,11 @@
     "vite": "^5.0.0"
   },
   "dependencies": {
-    "codemirror": "^5.65.5",
     "@codemirror/lang-rust": "^6.0.0",
-    "@codemirror/view": "^6.0.0",
     "@codemirror/state": "^6.0.0",
-    "@codemirror/theme-one-dark": "^6.0.0"
+    "@codemirror/theme-one-dark": "^6.0.0",
+    "@codemirror/view": "^6.0.0",
+    "codemirror": "^5.65.5",
+    "prismjs": "^1.30.0"
   }
 }

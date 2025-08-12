@@ -1,6 +1,6 @@
 <script lang="ts">
   import { onMount } from 'svelte';
-  import CodeExample from '../CodeExample.svelte';
+  import HighlightedCodeExample from '../HighlightedCodeExample.svelte';
 
   let sectionElement: HTMLElement;
   let currentExercise = 0;
@@ -178,28 +178,28 @@ fn max_number(a: i32, b: i32) -> i32 {
     <div class="content-card">
       <h4 class="text-xl font-semibold text-gray-800 mb-4">Common Patterns</h4>
       <div class="space-y-4">
-        <CodeExample 
+        <HighlightedCodeExample 
           title="No parameters, no return"
           code={`fn say_hello() {
     println!("Hello!");
 }`}
         />
         
-        <CodeExample 
+        <HighlightedCodeExample 
           title="With parameters"
           code={`fn greet(name: &str) {
     println!("Hello, {}!", name);
 }`}
         />
         
-        <CodeExample 
+        <HighlightedCodeExample 
           title="With return value"
           code={`fn add(x: i32, y: i32) -> i32 {
     x + y
 }`}
         />
         
-        <CodeExample 
+        <HighlightedCodeExample 
           title="Early return"
           code={`fn divide(x: f64, y: f64) -> f64 {
     if y == 0.0 {
@@ -346,7 +346,7 @@ fn max_number(a: i32, b: i32) -> i32 {
           Expressions don't end with semicolons when used as return values. 
           Adding a semicolon turns an expression into a statement!
         </p>
-        <CodeExample 
+        <HighlightedCodeExample 
           code={`fn returns_five() -> i32 {
     5     // Expression: returns 5
 }
@@ -362,14 +362,14 @@ fn returns_nothing() -> () {
     <div class="content-card">
       <h4 class="text-xl font-semibold text-gray-800 mb-4">Parameters & Arguments</h4>
       <div class="space-y-4">
-        <CodeExample 
+        <HighlightedCodeExample 
           title="Multiple Parameters"
           code={`fn print_coordinates(x: i32, y: i32) {
     println!("Point: ({}, {})", x, y);
 }`}
         />
         
-        <CodeExample 
+        <HighlightedCodeExample 
           title="Type Annotations Required"
           code={`// ❌ Error: missing type
 fn add(x, y) -> i32 { x + y }
@@ -384,7 +384,7 @@ fn add(x: i32, y: i32) -> i32 { x + y }`}
     <div class="content-card">
       <h4 class="text-xl font-semibold text-gray-800 mb-4">Return Values</h4>
       <div class="space-y-4">
-        <CodeExample 
+        <HighlightedCodeExample 
           title="Implicit Return"
           code={`fn add(x: i32, y: i32) -> i32 {
     x + y // No semicolon!
@@ -392,7 +392,7 @@ fn add(x: i32, y: i32) -> i32 { x + y }`}
           explanation="Last expression is returned automatically"
         />
         
-        <CodeExample 
+        <HighlightedCodeExample 
           title="Explicit Return"
           code={`fn add(x: i32, y: i32) -> i32 {
     return x + y; // Early return
@@ -400,7 +400,7 @@ fn add(x: i32, y: i32) -> i32 { x + y }`}
           explanation="Use return for early returns"
         />
         
-        <CodeExample 
+        <HighlightedCodeExample 
           title="Unit Type (No Return)"
           code={`fn print_hello() {
     println!("Hello!");
@@ -577,7 +577,4 @@ fn add(x: i32, y: i32) -> i32 { x + y }`}
     @apply mt-6 p-4 bg-orange-50 rounded border border-orange-200;
   }
 
-  .inline-code {
-    @apply bg-gray-100 px-1 py-0.5 rounded font-mono text-xs;
-  }
 </style>

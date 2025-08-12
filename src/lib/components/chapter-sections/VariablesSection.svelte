@@ -1,5 +1,6 @@
 <script lang="ts">
   import { onMount } from 'svelte';
+  import HighlightedCodeExample from '../HighlightedCodeExample.svelte';
 
   let sectionElement: HTMLElement;
   let codeInput = `fn main() {
@@ -153,9 +154,10 @@
           <h5 class="font-medium text-gray-800 mb-3 flex items-center gap-2">
             <span class="text-xl">🔒</span> Immutable Variables
           </h5>
-          <div class="code-example">
-            <code>let x = 5;</code>
-          </div>
+          <HighlightedCodeExample 
+            code="let x = 5;"
+            language="rust"
+          />
           <ul class="concept-list">
             <li>Cannot be changed after assignment</li>
             <li>Prevents accidental mutations</li>
@@ -168,9 +170,10 @@
           <h5 class="font-medium text-gray-800 mb-3 flex items-center gap-2">
             <span class="text-xl">🔓</span> Mutable Variables
           </h5>
-          <div class="code-example">
-            <code>let mut x = 5;<br>x = 6;</code>
-          </div>
+          <HighlightedCodeExample 
+            code={`let mut x = 5;\nx = 6;`}
+            language="rust"
+          />
           <ul class="concept-list">
             <li>Can be changed after assignment</li>
             <li>Must explicitly declare with <code class="inline-code">mut</code></li>
@@ -183,9 +186,10 @@
           <h5 class="font-medium text-gray-800 mb-3 flex items-center gap-2">
             <span class="text-xl">🎭</span> Shadowing
           </h5>
-          <div class="code-example">
-            <code>let x = 5;<br>let x = "hello";</code>
-          </div>
+          <HighlightedCodeExample 
+            code={`let x = 5;\nlet x = "hello";`}
+            language="rust"
+          />
           <ul class="concept-list">
             <li>Declare new variable with same name</li>
             <li>Can change type</li>
@@ -244,24 +248,33 @@
       <div class="exercises-grid">
         <div class="exercise-card">
           <h5 class="font-medium text-gray-800 mb-2">Exercise 1: Fix the Error</h5>
-          <div class="code-example mb-3">
-            <code>let x = 5;<br>x = 10; // Error!</code>
+          <div class="mb-3">
+            <HighlightedCodeExample 
+              code={`let x = 5;\nx = 10; // Error!`}
+              language="rust"
+            />
           </div>
           <p class="text-sm text-gray-600">Make this code compile by allowing x to be mutable.</p>
         </div>
         
         <div class="exercise-card">
           <h5 class="font-medium text-gray-800 mb-2">Exercise 2: Shadowing</h5>
-          <div class="code-example mb-3">
-            <code>let spaces = "   ";<br>let spaces = spaces.len();</code>
+          <div class="mb-3">
+            <HighlightedCodeExample 
+              code={`let spaces = "   ";\nlet spaces = spaces.len();`}
+              language="rust"
+            />
           </div>
           <p class="text-sm text-gray-600">What is the type and value of spaces after the second declaration?</p>
         </div>
         
         <div class="exercise-card">
           <h5 class="font-medium text-gray-800 mb-2">Exercise 3: Constants</h5>
-          <div class="code-example mb-3">
-            <code>const MAX_POINTS: u32 = 100_000;</code>
+          <div class="mb-3">
+            <HighlightedCodeExample 
+              code="const MAX_POINTS: u32 = 100_000;"
+              language="rust"
+            />
           </div>
           <p class="text-sm text-gray-600">Create a constant for the number of seconds in a day.</p>
         </div>
@@ -343,9 +356,6 @@
     @apply p-4 bg-white rounded border border-gray-200;
   }
 
-  .code-example {
-    @apply bg-gray-800 text-green-400 p-3 rounded font-mono text-sm mb-3;
-  }
 
   .concept-list {
     @apply space-y-1 text-sm text-gray-600;

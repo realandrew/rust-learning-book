@@ -1,5 +1,6 @@
 <script lang="ts">
   import { onMount } from 'svelte';
+  import HighlightedCodeExample from '../HighlightedCodeExample.svelte';
 
   let sectionElement: HTMLElement;
   let selectedCategory = 'scalar';

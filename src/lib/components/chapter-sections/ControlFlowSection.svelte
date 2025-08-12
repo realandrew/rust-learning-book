@@ -1,6 +1,6 @@
 <script lang="ts">
   import { onMount } from 'svelte';
-  import CodeExample from '../CodeExample.svelte';
+  import HighlightedCodeExample from '../HighlightedCodeExample.svelte';
 
   let sectionElement: HTMLElement;
   let selectedTab = 'if';
@@ -238,7 +238,7 @@
     <div class="content-card">
       <h4 class="text-xl font-semibold text-gray-800 mb-4">if Expressions</h4>
       <div class="space-y-4">
-        <CodeExample 
+        <HighlightedCodeExample 
           title="Basic if/else"
           code={`if condition {
     // do something
@@ -247,13 +247,13 @@
 }`}
         />
         
-        <CodeExample 
+        <HighlightedCodeExample 
           title="if is an expression"
           code={`let number = if condition { 5 } else { 6 };`}
           explanation="Both arms must return the same type"
         />
         
-        <CodeExample 
+        <HighlightedCodeExample 
           title="Multiple conditions"
           code={`if number % 4 == 0 {
     println!("divisible by 4");
@@ -279,7 +279,7 @@
           <h5 class="font-medium text-gray-800 mb-2 flex items-center gap-2">
             <span class="text-lg">🔄</span> loop
           </h5>
-          <CodeExample 
+          <HighlightedCodeExample 
             code={`loop {
     println!("again!");
     break; // Exit the loop
@@ -292,7 +292,7 @@
           <h5 class="font-medium text-gray-800 mb-2 flex items-center gap-2">
             <span class="text-lg">⏰</span> while
           </h5>
-          <CodeExample 
+          <HighlightedCodeExample 
             code={`while condition {
     // loop body
 }`}
@@ -304,7 +304,7 @@
           <h5 class="font-medium text-gray-800 mb-2 flex items-center gap-2">
             <span class="text-lg">📋</span> for
           </h5>
-          <CodeExample 
+          <HighlightedCodeExample 
             code={`for item in collection {
     // process item
 }`}
@@ -322,7 +322,7 @@
           <h5 class="font-medium text-gray-800 mb-3 flex items-center gap-2">
             <span class="text-xl">🛑</span> break
           </h5>
-          <CodeExample 
+          <HighlightedCodeExample 
             code={`loop {
     if condition {
         break;
@@ -336,7 +336,7 @@
           <h5 class="font-medium text-gray-800 mb-3 flex items-center gap-2">
             <span class="text-xl">⏭️</span> continue
           </h5>
-          <CodeExample 
+          <HighlightedCodeExample 
             code={`for i in 0..10 {
     if i % 2 == 0 {
         continue;
@@ -351,7 +351,7 @@
           <h5 class="font-medium text-gray-800 mb-3 flex items-center gap-2">
             <span class="text-xl">↩️</span> Return from loop
           </h5>
-          <CodeExample 
+          <HighlightedCodeExample 
             code={`let result = loop {
     counter += 1;
     if counter == 10 {
@@ -369,7 +369,7 @@
       <h4 class="text-xl font-semibold text-gray-800 mb-4">for Loop Patterns</h4>
       <div class="patterns-grid">
         <div class="pattern-card">
-          <CodeExample 
+          <HighlightedCodeExample 
             title="Iterate over array"
             code={`let a = [10, 20, 30, 40, 50];
 for element in a {
@@ -379,7 +379,7 @@ for element in a {
         </div>
         
         <div class="pattern-card">
-          <CodeExample 
+          <HighlightedCodeExample 
             title="Range (exclusive)"
             code={`for i in 0..5 {
     println!("{}", i); // 0,1,2,3,4
@@ -388,7 +388,7 @@ for element in a {
         </div>
         
         <div class="pattern-card">
-          <CodeExample 
+          <HighlightedCodeExample 
             title="Range (inclusive)"
             code={`for i in 0..=5 {
     println!("{}", i); // 0,1,2,3,4,5
@@ -397,7 +397,7 @@ for element in a {
         </div>
         
         <div class="pattern-card">
-          <CodeExample 
+          <HighlightedCodeExample 
             title="Reverse range"
             code={`for i in (1..4).rev() {
     println!("{}", i); // 3,2,1
@@ -406,7 +406,7 @@ for element in a {
         </div>
         
         <div class="pattern-card">
-          <CodeExample 
+          <HighlightedCodeExample 
             title="With index"
             code={`let a = ["a", "b", "c"];
 for (i, item) in a.iter().enumerate() {
@@ -416,7 +416,7 @@ for (i, item) in a.iter().enumerate() {
         </div>
         
         <div class="pattern-card">
-          <CodeExample 
+          <HighlightedCodeExample 
             title="Step by"
             code={`for i in (0..10).step_by(2) {
     println!("{}", i); // 0,2,4,6,8
@@ -436,7 +436,7 @@ for (i, item) in a.iter().enumerate() {
             Print numbers 1-15. For multiples of 3 print "Fizz", for multiples of 5 print "Buzz", 
             for multiples of both print "FizzBuzz".
           </p>
-          <CodeExample 
+          <HighlightedCodeExample 
             code={`for i in 1..=15 {
     // Your code here
 }`}
@@ -448,7 +448,7 @@ for (i, item) in a.iter().enumerate() {
           <p class="text-sm text-gray-600 mb-3">
             Convert temperatures between Fahrenheit and Celsius using if expressions.
           </p>
-          <CodeExample 
+          <HighlightedCodeExample 
             code={`let temp_f = 32;
 let temp_c = if /* condition */ {
     // conversion formula
@@ -463,7 +463,7 @@ let temp_c = if /* condition */ {
           <p class="text-sm text-gray-600 mb-3">
             Generate the first 10 Fibonacci numbers using a loop.
           </p>
-          <CodeExample 
+          <HighlightedCodeExample 
             code={`let mut a = 0;
 let mut b = 1;
 // Use a loop to generate sequence`}

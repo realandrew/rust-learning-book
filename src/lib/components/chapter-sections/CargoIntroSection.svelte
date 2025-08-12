@@ -1,5 +1,6 @@
 <script lang="ts">
   import { onMount } from 'svelte';
+  import HighlightedCodeExample from '../HighlightedCodeExample.svelte';
 
   let sectionElement: HTMLElement;
   let selectedTab = 'overview';
@@ -155,27 +156,51 @@
               <h5 class="font-medium text-gray-800 mb-4">Essential Cargo Commands</h5>
               <div class="space-y-3">
                 <div class="command-item">
-                  <code class="command-code">cargo new project_name</code>
+                  <HighlightedCodeExample 
+                    code="cargo new project_name"
+                    language="bash"
+                    isTerminal={true}
+                  />
                   <p class="text-sm text-gray-600">Create a new Rust project</p>
                 </div>
                 <div class="command-item">
-                  <code class="command-code">cargo build</code>
+                  <HighlightedCodeExample 
+                    code="cargo build"
+                    language="bash"
+                    isTerminal={true}
+                  />
                   <p class="text-sm text-gray-600">Compile the project (debug mode)</p>
                 </div>
                 <div class="command-item">
-                  <code class="command-code">cargo run</code>
+                  <HighlightedCodeExample 
+                    code="cargo run"
+                    language="bash"
+                    isTerminal={true}
+                  />
                   <p class="text-sm text-gray-600">Compile and run the project</p>
                 </div>
                 <div class="command-item">
-                  <code class="command-code">cargo test</code>
+                  <HighlightedCodeExample 
+                    code="cargo test"
+                    language="bash"
+                    isTerminal={true}
+                  />
                   <p class="text-sm text-gray-600">Run all tests</p>
                 </div>
                 <div class="command-item">
-                  <code class="command-code">cargo build --release</code>
+                  <HighlightedCodeExample 
+                    code="cargo build --release"
+                    language="bash"
+                    isTerminal={true}
+                  />
                   <p class="text-sm text-gray-600">Build with optimizations</p>
                 </div>
                 <div class="command-item">
-                  <code class="command-code">cargo check</code>
+                  <HighlightedCodeExample 
+                    code="cargo check"
+                    language="bash"
+                    isTerminal={true}
+                  />
                   <p class="text-sm text-gray-600">Check code without building</p>
                 </div>
               </div>
@@ -187,7 +212,8 @@
                 <div class="code-header">
                   <span class="text-sm text-gray-500">Cargo.toml</span>
                 </div>
-                <pre class="toml-code"><code>[package]
+                <HighlightedCodeExample 
+                  code={`[package]
 name = "hello_world"
 version = "0.1.0"
 edition = "2021"
@@ -195,7 +221,9 @@ edition = "2021"
 [dependencies]
 # Add external crates here
 # serde = "1.0"
-# tokio = "1.0"</code></pre>
+# tokio = "1.0"`}
+                  language="toml"
+                />
               </div>
               <div class="mt-4 space-y-2">
                 <div class="toml-explanation">
@@ -273,9 +301,11 @@ edition = "2021"
             <span class="step-icon">1️⃣</span>
             <h5 class="font-medium text-gray-800">Create a new project</h5>
           </div>
-          <div class="code-block">
-            <code>cargo new hello_cargo --bin</code>
-          </div>
+          <HighlightedCodeExample 
+            code="cargo new hello_cargo --bin"
+            language="bash"
+            isTerminal={true}
+          />
           <p class="text-sm text-gray-600 mt-2">The <code class="inline-code">--bin</code> flag creates a binary (executable) project</p>
         </div>
 
@@ -284,9 +314,11 @@ edition = "2021"
             <span class="step-icon">2️⃣</span>
             <h5 class="font-medium text-gray-800">Navigate to the project</h5>
           </div>
-          <div class="code-block">
-            <code>cd hello_cargo</code>
-          </div>
+          <HighlightedCodeExample 
+            code="cd hello_cargo"
+            language="bash"
+            isTerminal={true}
+          />
         </div>
 
         <div class="quick-step">
@@ -294,9 +326,11 @@ edition = "2021"
             <span class="step-icon">3️⃣</span>
             <h5 class="font-medium text-gray-800">Run the project</h5>
           </div>
-          <div class="code-block">
-            <code>cargo run</code>
-          </div>
+          <HighlightedCodeExample 
+            code="cargo run"
+            language="bash"
+            isTerminal={true}
+          />
           <p class="text-sm text-gray-600 mt-2">This builds and runs your project in one command!</p>
         </div>
       </div>
@@ -377,9 +411,6 @@ edition = "2021"
     @apply flex items-start gap-3 p-3 bg-gray-50 rounded;
   }
 
-  .command-code {
-    @apply bg-gray-800 text-green-400 px-3 py-1 rounded font-mono text-sm flex-shrink-0;
-  }
 
   .toml-example {
     @apply bg-gray-800 rounded-lg overflow-hidden;
@@ -389,9 +420,6 @@ edition = "2021"
     @apply px-4 py-2 bg-gray-700 border-b border-gray-600;
   }
 
-  .toml-code {
-    @apply text-green-400 font-mono text-sm p-4 overflow-x-auto;
-  }
 
   .toml-explanation {
     @apply flex items-center gap-3;
@@ -445,7 +473,4 @@ edition = "2021"
     @apply text-xl;
   }
 
-  .code-block {
-    @apply bg-gray-800 text-green-400 p-3 rounded font-mono text-sm;
-  }
 </style>

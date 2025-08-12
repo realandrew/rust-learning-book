@@ -1,5 +1,6 @@
 <script lang="ts">
   import { onMount } from 'svelte';
+  import HighlightedCodeExample from '../HighlightedCodeExample.svelte';
 
   let sectionElement: HTMLElement;
   let codeInput = `fn main() {
@@ -142,14 +143,25 @@
             <div class="step-item">
               <div class="step-number">3</div>
               <div class="step-content">
-                <p class="text-sm">Compile: <code class="bg-gray-100 px-1 rounded">rustc main.rs</code></p>
+                <p class="text-sm mb-2">Compile:</p>
+                <HighlightedCodeExample 
+                  code="rustc main.rs"
+                  language="bash"
+                  isTerminal={true}
+                />
               </div>
             </div>
             
             <div class="step-item">
               <div class="step-number">4</div>
               <div class="step-content">
-                <p class="text-sm">Run: <code class="bg-gray-100 px-1 rounded">./main</code> (or <code class="bg-gray-100 px-1 rounded">main.exe</code> on Windows)</p>
+                <p class="text-sm mb-2">Run:</p>
+                <HighlightedCodeExample 
+                  code="./main"
+                  language="bash"
+                  isTerminal={true}
+                  explanation="On Windows use: main.exe"
+                />
               </div>
             </div>
           </div>
@@ -161,14 +173,24 @@
             <div class="step-item">
               <div class="step-number">1</div>
               <div class="step-content">
-                <p class="text-sm">Create project: <code class="bg-gray-100 px-1 rounded">cargo new hello_world</code></p>
+                <p class="text-sm mb-2">Create project:</p>
+                <HighlightedCodeExample 
+                  code="cargo new hello_world"
+                  language="bash"
+                  isTerminal={true}
+                />
               </div>
             </div>
             
             <div class="step-item">
               <div class="step-number">2</div>
               <div class="step-content">
-                <p class="text-sm">Navigate: <code class="bg-gray-100 px-1 rounded">cd hello_world</code></p>
+                <p class="text-sm mb-2">Navigate:</p>
+                <HighlightedCodeExample 
+                  code="cd hello_world"
+                  language="bash"
+                  isTerminal={true}
+                />
               </div>
             </div>
             
@@ -182,7 +204,12 @@
             <div class="step-item">
               <div class="step-number">4</div>
               <div class="step-content">
-                <p class="text-sm">Run: <code class="bg-gray-100 px-1 rounded">cargo run</code></p>
+                <p class="text-sm mb-2">Run:</p>
+                <HighlightedCodeExample 
+                  code="cargo run"
+                  language="bash"
+                  isTerminal={true}
+                />
               </div>
             </div>
           </div>
@@ -197,19 +224,30 @@
         <div class="challenge-card">
           <h5 class="font-medium text-gray-800 mb-2">Challenge 1</h5>
           <p class="text-sm text-gray-600 mb-3">Change the message to print your name</p>
-          <code class="text-xs bg-gray-100 p-2 rounded block">println!("Hello, [Your Name]!");</code>
+          <HighlightedCodeExample 
+            code='println!("Hello, [Your Name]!");'
+            language="rust"
+          />
         </div>
         
         <div class="challenge-card">
           <h5 class="font-medium text-gray-800 mb-2">Challenge 2</h5>
           <p class="text-sm text-gray-600 mb-3">Print multiple lines</p>
-          <code class="text-xs bg-gray-100 p-2 rounded block">println!("Line 1");<br>println!("Line 2");</code>
+          <HighlightedCodeExample 
+            code='println!("Line 1");
+println!("Line 2");'
+            language="rust"
+          />
         </div>
         
         <div class="challenge-card">
           <h5 class="font-medium text-gray-800 mb-2">Challenge 3</h5>
           <p class="text-sm text-gray-600 mb-3">Try print! instead of println!</p>
-          <code class="text-xs bg-gray-100 p-2 rounded block">print!("Hello, ");print!("world!");</code>
+          <HighlightedCodeExample 
+            code='print!("Hello, ");
+print!("world!");'
+            language="rust"
+          />
         </div>
       </div>
     </div>

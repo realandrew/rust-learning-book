@@ -1,5 +1,6 @@
 <script lang="ts">
   import { onMount } from 'svelte';
+  import HighlightedCodeExample from '../HighlightedCodeExample.svelte';
 
   let sectionElement: HTMLElement;
 
@@ -32,8 +33,12 @@
           <div class="step-number">2</div>
           <div class="step-content">
             <h5 class="font-medium text-gray-800">Run the Installation Command</h5>
-            <div class="code-block mt-2">
-              <code>curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh</code>
+            <div class="mt-2">
+              <HighlightedCodeExample 
+                code="curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh"
+                language="bash"
+                isTerminal={true}
+              />
             </div>
           </div>
         </div>
@@ -42,7 +47,14 @@
           <div class="step-number">3</div>
           <div class="step-content">
             <h5 class="font-medium text-gray-800">Restart Your Shell</h5>
-            <p class="text-sm text-gray-600 mt-1">Or run <code class="bg-gray-100 px-2 py-1 rounded">source ~/.bashrc</code></p>
+            <p class="text-sm text-gray-600 mt-1">Or run:</p>
+            <div class="mt-2">
+              <HighlightedCodeExample 
+                code="source ~/.bashrc"
+                language="bash"
+                isTerminal={true}
+              />
+            </div>
           </div>
         </div>
         
@@ -50,8 +62,12 @@
           <div class="step-number">4</div>
           <div class="step-content">
             <h5 class="font-medium text-gray-800">Verify Installation</h5>
-            <div class="code-block mt-2">
-              <code>rustc --version</code>
+            <div class="mt-2">
+              <HighlightedCodeExample 
+                code="rustc --version"
+                language="bash"
+                isTerminal={true}
+              />
             </div>
           </div>
         </div>
@@ -75,18 +91,28 @@
           <h5 class="font-medium text-gray-800 flex items-center gap-2">
             <span class="text-lg">🍎</span> macOS
           </h5>
-          <p class="text-sm text-gray-600 mt-1">
-            Requires Xcode command line tools. Run <code class="bg-gray-100 px-1 rounded">xcode-select --install</code>
+          <p class="text-sm text-gray-600 mt-1 mb-2">
+            Requires Xcode command line tools. Run:
           </p>
+          <HighlightedCodeExample 
+            code="xcode-select --install"
+            language="bash"
+            isTerminal={true}
+          />
         </div>
         
         <div class="platform-card">
           <h5 class="font-medium text-gray-800 flex items-center gap-2">
             <span class="text-lg">🐧</span> Linux
           </h5>
-          <p class="text-sm text-gray-600 mt-1">
-            Usually works out of the box. You might need <code class="bg-gray-100 px-1 rounded">build-essential</code> on Ubuntu.
+          <p class="text-sm text-gray-600 mt-1 mb-2">
+            Usually works out of the box. You might need build-essential on Ubuntu:
           </p>
+          <HighlightedCodeExample 
+            code="sudo apt install build-essential"
+            language="bash"
+            isTerminal={true}
+          />
         </div>
       </div>
     </div>
@@ -123,8 +149,12 @@
           <span class="text-green-600 text-xl">✅</span>
           <div>
             <h5 class="font-medium text-green-800">Check if everything works:</h5>
-            <div class="code-block mt-2">
-              <code>rustc --version && cargo --version && rustup --version</code>
+            <div class="mt-2">
+              <HighlightedCodeExample 
+                code="rustc --version && cargo --version && rustup --version"
+                language="bash"
+                isTerminal={true}
+              />
             </div>
           </div>
         </div>
@@ -166,9 +196,6 @@
     @apply flex-1;
   }
 
-  .code-block {
-    @apply bg-gray-800 text-green-400 p-3 rounded font-mono text-sm overflow-x-auto;
-  }
 
   .platform-card {
     @apply p-3 bg-white rounded border border-gray-200;
@@ -178,7 +205,4 @@
     @apply text-center p-4 bg-white rounded border border-gray-200;
   }
 
-  .verification-steps {
-    @apply space-y-3;
-  }
 </style>
