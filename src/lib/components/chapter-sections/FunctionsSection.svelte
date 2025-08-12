@@ -575,4 +575,17 @@ fn add(x: i32, y: i32) -> i32 { x + y }`}
     @apply mt-6 p-4 bg-orange-50 rounded border border-orange-200;
   }
 
+  /* Function anatomy diagram styling */
+  .code-example {
+    @apply bg-gray-900 rounded p-4 font-mono text-sm overflow-x-auto;
+  }
+
+  .code-example pre {
+    @apply m-0 text-gray-100;
+  }
+
+  .code-example code {
+    @apply text-gray-100;
+  }
+
 </style>
