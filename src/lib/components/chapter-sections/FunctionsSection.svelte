@@ -197,6 +197,7 @@ fn max_number(a: i32, b: i32) -> i32 {
           code={`fn add(x: i32, y: i32) -> i32 {
     x + y
 }`}
+          fileName="math.rs"
         />
         
         <HighlightedCodeExample 

@@ -157,6 +157,7 @@
           <HighlightedCodeExample 
             code="let x = 5;"
             language="rust"
+            showLineNumbers={false}
           />
           <ul class="concept-list">
             <li>Cannot be changed after assignment</li>
@@ -274,6 +275,7 @@
             <HighlightedCodeExample 
               code="const MAX_POINTS: u32 = 100_000;"
               language="rust"
+              showLineNumbers={false}
             />
           </div>
           <p class="text-sm text-gray-600">Create a constant for the number of seconds in a day.</p>

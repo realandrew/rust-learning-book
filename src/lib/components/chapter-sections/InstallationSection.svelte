@@ -38,6 +38,7 @@
                 code="curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh"
                 language="bash"
                 isTerminal={true}
+                title="Download and run the Rust installer"
               />
             </div>
           </div>

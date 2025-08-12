@@ -98,7 +98,6 @@ impl Summary for NewsArticle {
 fn notify<T: Summary>(item: &T) {
     println!("Breaking news! {}", item.summarize());
 }`}
-        showLineNumbers={true}
         highlightLines={[1, 8, 14]}
       />
     </div>
