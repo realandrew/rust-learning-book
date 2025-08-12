@@ -1,5 +1,5 @@
 // Section types
-export type SectionId = 'overview' | 'visual' | 'interactive' | 'exercises' | 'reference';
+export type SectionId = 'overview' | 'visual' | 'interactive' | 'exercises' | 'reference' | 'chapter';
 
 export interface Section {
   id: SectionId;

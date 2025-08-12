@@ -1,13 +1,18 @@
 <script>
-  import { onMount } from 'svelte';
+  import { onMount, createEventDispatcher } from 'svelte';
   import { chapters } from '../data/chapters';
 
+  const dispatch = createEventDispatcher();
   let sectionElement;
 
   onMount(() => {
     sectionElement.classList.add('fade-in');
     setTimeout(() => sectionElement.classList.remove('fade-in'), 500);
   });
+
+  function openChapter(chapterId) {
+    dispatch('openChapter', chapterId);
+  }
 </script>
 
 <section bind:this={sectionElement} class="py-8">
@@ -184,8 +189,13 @@
               <div class="text-xs text-gray-500">
                 {chapter.sections.length} sections
               </div>
-              <button class="text-rust-primary hover:text-rust-dark text-sm font-medium" disabled>
-                Coming Soon →
+              <button 
+                class="text-rust-primary hover:text-rust-dark text-sm font-medium"
+                class:opacity-50={chapter.id !== 'getting-started'}
+                disabled={chapter.id !== 'getting-started'}
+                on:click={() => openChapter(chapter.id)}
+              >
+                {chapter.id === 'getting-started' ? 'Start Learning →' : 'Coming Soon →'}
               </button>
             </div>
           </div>

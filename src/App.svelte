@@ -5,12 +5,19 @@
   import InteractiveCode from './lib/components/InteractiveCode.svelte';
   import Exercises from './lib/components/Exercises.svelte';
   import Reference from './lib/components/Reference.svelte';
+  import Chapter from './lib/components/Chapter.svelte';
   import type { SectionId } from './lib/types';
 
   let currentSection: SectionId = 'overview';
+  let currentChapterId: string = '';
 
   function switchSection(sectionName: SectionId): void {
     currentSection = sectionName;
+  }
+
+  function switchToChapter(chapterId: string): void {
+    currentChapterId = chapterId;
+    currentSection = 'chapter';
   }
 
   // Keyboard shortcuts
@@ -49,7 +56,7 @@
   
   <div class="pt-20 min-h-screen md:pt-24">
     {#if currentSection === 'overview'}
-      <Overview />
+      <Overview on:openChapter={(e) => switchToChapter(e.detail)} />
     {:else if currentSection === 'visual'}
       <VisualLearning />
     {:else if currentSection === 'interactive'}
@@ -58,6 +65,8 @@
       <Exercises />
     {:else if currentSection === 'reference'}
       <Reference />
+    {:else if currentSection === 'chapter'}
+      <Chapter chapterId={currentChapterId} on:backToOverview={() => switchSection('overview')} />
     {/if}
   </div>
 </main>
