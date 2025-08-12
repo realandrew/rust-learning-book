@@ -12,6 +12,9 @@
   
   let highlightedCode = '';
   let codeElement: HTMLElement;
+  let codeContainer: HTMLElement;
+  let codeContentElement: HTMLElement;
+  let isScrollable = false;
   
   onMount(() => {
     // Highlight the code when component mounts
@@ -20,7 +23,16 @@
       showLineNumbers,
       highlightLines
     });
+    
+    // Check if content is scrollable
+    checkScrollable();
   });
+  
+  function checkScrollable() {
+    if (codeContentElement) {
+      isScrollable = codeContentElement.scrollWidth > codeContentElement.clientWidth;
+    }
+  }
   
   // Re-highlight when code changes
   $: if (code) {
@@ -29,6 +41,8 @@
       showLineNumbers,
       highlightLines
     });
+    // Recheck scrollable after code changes
+    setTimeout(checkScrollable, 0);
   }
 </script>
 
@@ -37,7 +51,12 @@
     <h6 class="code-title">{title}</h6>
   {/if}
   
-  <div class="code-container" class:terminal={isTerminal}>
+  <div 
+    bind:this={codeContainer}
+    class="code-container" 
+    class:terminal={isTerminal}
+    class:scrollable={isScrollable}
+  >
     <div class="code-header" class:terminal-header={isTerminal}>
       {#if isTerminal}
         <div class="flex items-center gap-2">
@@ -56,7 +75,7 @@
       {/if}
     </div>
     
-    <div class="code-content">
+    <div bind:this={codeContentElement} class="code-content">
       <pre 
         bind:this={codeElement}
         class="code-pre language-{language}"
@@ -81,10 +100,33 @@
   
   .code-container {
     @apply bg-gray-900 rounded-lg overflow-hidden shadow-lg;
+    position: relative;
   }
   
   .code-container.terminal {
     @apply bg-black;
+  }
+  
+  /* Fade overlay for scroll indication - only show when scrollable */
+  .code-container.scrollable::after {
+    content: '';
+    position: absolute;
+    top: 48px; /* Height of header */
+    right: 0;
+    bottom: 0;
+    width: 20px;
+    background: linear-gradient(to left, rgba(17, 24, 39, 0.8), transparent);
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  .code-container.scrollable.terminal::after {
+    background: linear-gradient(to left, rgba(0, 0, 0, 0.8), transparent);
+  }
+  
+  .code-container.scrollable:hover::after {
+    opacity: 1;
   }
   
   .code-header {
@@ -97,11 +139,60 @@
   
   .code-content {
     @apply p-4 overflow-x-auto;
+    /* Custom scrollbar styling */
+    scrollbar-width: thin;
+    scrollbar-color: rgba(156, 163, 175, 0.5) rgba(55, 65, 81, 0.3);
+    /* Better touch scrolling on mobile */
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+  }
+  
+  /* Webkit scrollbar styling */
+  .code-content::-webkit-scrollbar {
+    height: 8px;
+  }
+  
+  .code-content::-webkit-scrollbar-track {
+    background: rgba(55, 65, 81, 0.3);
+    border-radius: 4px;
+  }
+  
+  .code-content::-webkit-scrollbar-thumb {
+    background: rgba(156, 163, 175, 0.5);
+    border-radius: 4px;
+    transition: background-color 0.2s ease;
+  }
+  
+  .code-content::-webkit-scrollbar-thumb:hover {
+    background: rgba(156, 163, 175, 0.7);
   }
   
   .code-pre {
     @apply m-0 text-sm font-mono leading-relaxed;
     background: transparent !important;
+    white-space: pre;
+    overflow-wrap: normal;
+    word-break: normal;
+    min-width: fit-content;
+  }
+  
+  /* Mobile responsiveness */
+  @media (max-width: 640px) {
+    .code-content {
+      @apply p-3;
+    }
+    
+    .code-pre {
+      @apply text-xs;
+    }
+    
+    .code-header {
+      @apply px-3 py-2;
+    }
+    
+    .code-header span {
+      @apply text-xs;
+    }
   }
   
   .code-explanation {
@@ -191,7 +282,19 @@
     @apply text-gray-100;
   }
 
-  /* Terminal-specific highlighting */
+  /* Terminal-specific highlighting and scrollbar */
+  .terminal .code-content::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.4);
+  }
+  
+  .terminal .code-content::-webkit-scrollbar-thumb {
+    background: rgba(34, 197, 94, 0.3);
+  }
+  
+  .terminal .code-content::-webkit-scrollbar-thumb:hover {
+    background: rgba(34, 197, 94, 0.5);
+  }
+  
   :global(.terminal .code-pre) {
     @apply text-green-400;
   }

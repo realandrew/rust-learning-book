@@ -147,7 +147,7 @@
       <div class="verification-steps">
         <div class="flex items-start gap-3 p-3 bg-green-50 rounded-lg border border-green-200">
           <span class="text-green-600 text-xl">✅</span>
-          <div>
+          <div class="verification-content">
             <h5 class="font-medium text-green-800">Check if everything works:</h5>
             <div class="mt-2">
               <HighlightedCodeExample 
@@ -194,6 +194,7 @@
 
   .step-content {
     @apply flex-1;
+    min-width: 0; /* Allow flex item to shrink below content size */
   }
 
 
@@ -203,6 +204,15 @@
 
   .tool-card {
     @apply text-center p-4 bg-white rounded border border-gray-200;
+  }
+
+  .verification-steps {
+    @apply space-y-3;
+  }
+
+  .verification-content {
+    flex: 1;
+    min-width: 0; /* Allow flex item to shrink below content size */
   }
 
 </style>

@@ -329,6 +329,7 @@ print!("world!");'
 
   .step-content {
     @apply flex-1;
+    min-width: 0; /* Allow flex item to shrink below content size */
   }
 
   .steps-container {
