@@ -1,0 +1,63 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom CSS for complex styles that don't translate well to Tailwind */
+@layer base {
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+}
+
+@layer components {
+  /* Custom gradient backgrounds */
+  .gradient-rust {
+    background: linear-gradient(135deg, #ce422b, #d2691e);
+  }
+  
+  .gradient-progress {
+    background: linear-gradient(90deg, #ce422b, #d2691e);
+  }
+  
+  /* Code highlighting */
+  .highlight {
+    @apply bg-rust-primary bg-opacity-10 border-l-4 border-rust-primary py-1 px-2 my-1;
+  }
+  
+  /* Custom tooltips */
+  .tooltip {
+    @apply relative inline-block cursor-help;
+  }
+  
+  .tooltip:hover::after {
+    content: attr(data-tooltip);
+    @apply absolute bottom-full left-1/2 transform -translate-x-1/2 bg-gray-800 text-white px-2 py-1 rounded text-xs whitespace-nowrap z-50 pointer-events-none;
+    margin-bottom: 5px;
+  }
+  
+  /* Progress bars */
+  .progress-bar {
+    @apply w-full h-1 bg-gray-200 rounded overflow-hidden my-4;
+  }
+  
+  .progress-fill {
+    @apply h-full gradient-progress transition-all duration-300 ease-in-out;
+  }
+}
+
+@layer utilities {
+  .fade-in {
+    animation: fadeIn 0.5s ease-in;
+  }
+  
+  @keyframes fadeIn {
+    from { 
+      opacity: 0; 
+      transform: translateY(20px); 
+    }
+    to { 
+      opacity: 1; 
+      transform: translateY(0); 
+    }
+  }
+}
