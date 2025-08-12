@@ -34,11 +34,33 @@
             
             <div class="placeholder-content">
               {#if section.id === 'cargo-intro'}
-                <div class="flex items-center justify-center h-32 bg-gray-50 rounded-lg border-2 border-dashed border-gray-300">
-                  <div class="text-center">
-                    <div class="text-2xl mb-2">📦</div>
-                    <div class="text-sm text-gray-500">Cargo Workflow Diagram</div>
-                    <div class="text-xs text-gray-400 mt-1">Coming Soon</div>
+                <div class="cargo-workflow-visual">
+                  <div class="workflow-step-visual">
+                    <div class="workflow-icon-visual">📁</div>
+                    <div class="workflow-text-visual">
+                      <div class="text-xs font-medium text-gray-800">Create</div>
+                      <code class="text-xs">cargo new</code>
+                    </div>
+                  </div>
+                  
+                  <div class="workflow-arrow-visual">→</div>
+                  
+                  <div class="workflow-step-visual">
+                    <div class="workflow-icon-visual">✏️</div>
+                    <div class="workflow-text-visual">
+                      <div class="text-xs font-medium text-gray-800">Code</div>
+                      <code class="text-xs">src/main.rs</code>
+                    </div>
+                  </div>
+                  
+                  <div class="workflow-arrow-visual">→</div>
+                  
+                  <div class="workflow-step-visual">
+                    <div class="workflow-icon-visual">🚀</div>
+                    <div class="workflow-text-visual">
+                      <div class="text-xs font-medium text-gray-800">Run</div>
+                      <code class="text-xs">cargo run</code>
+                    </div>
                   </div>
                 </div>
               {:else if section.id === 'data-types'}
@@ -121,5 +143,25 @@
 
   .placeholder-content {
     @apply rounded-lg overflow-hidden;
+  }
+
+  .cargo-workflow-visual {
+    @apply flex items-center justify-center gap-2 p-4 bg-gradient-to-r from-rust-primary/10 to-rust-secondary/10 rounded-lg border border-rust-primary/20;
+  }
+
+  .workflow-step-visual {
+    @apply flex flex-col items-center gap-1 p-2 bg-white rounded border border-gray-200 shadow-sm;
+  }
+
+  .workflow-icon-visual {
+    @apply text-lg;
+  }
+
+  .workflow-text-visual {
+    @apply text-center;
+  }
+
+  .workflow-arrow-visual {
+    @apply text-rust-primary text-lg font-bold;
   }
 </style>
