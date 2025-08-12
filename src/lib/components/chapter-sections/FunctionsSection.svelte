@@ -438,9 +438,6 @@ fn add(x: i32, y: i32) -> i32 { x + y }`}
     @apply space-y-4;
   }
 
-  .code-example {
-    @apply bg-gray-800 text-green-400 p-4 rounded font-mono text-sm overflow-x-auto;
-  }
 
   .highlight-keyword {
     @apply text-purple-400;

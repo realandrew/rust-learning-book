@@ -97,8 +97,12 @@
               <h5 class="font-semibold text-gray-800 mb-2">{type.name}</h5>
               <p class="text-sm text-gray-600 mb-4">{type.description}</p>
               
-              <div class="code-example mb-4">
-                <code>{type.example}</code>
+              <div class="mb-4">
+                <HighlightedCodeExample 
+                  code={type.example}
+                  language="rust"
+                  showLineNumbers={false}
+                />
               </div>
               
               <div class="type-variants">
@@ -216,8 +220,12 @@
               <h5 class="font-semibold text-gray-800 mb-2">{type.name}</h5>
               <p class="text-sm text-gray-600 mb-4">{type.description}</p>
               
-              <div class="code-example mb-3">
-                <code>{type.example}</code>
+              <div class="mb-3">
+                <HighlightedCodeExample 
+                  code={type.example}
+                  language="rust"
+                  showLineNumbers={false}
+                />
               </div>
               
               <div class="access-info">
@@ -235,30 +243,38 @@
         <div class="space-y-4">
           <div class="example-section">
             <h6 class="font-medium text-gray-800 mb-2">Creating tuples:</h6>
-            <div class="code-example">
-              <code>let tup: (i32, f64, u8) = (500, 6.4, 1);</code>
-            </div>
+            <HighlightedCodeExample 
+              code="let tup: (i32, f64, u8) = (500, 6.4, 1);"
+              language="rust"
+              showLineNumbers={false}
+            />
           </div>
           
           <div class="example-section">
             <h6 class="font-medium text-gray-800 mb-2">Destructuring:</h6>
-            <div class="code-example">
-              <code>let (x, y, z) = tup;</code>
-            </div>
+            <HighlightedCodeExample 
+              code="let (x, y, z) = tup;"
+              language="rust"
+              showLineNumbers={false}
+            />
           </div>
           
           <div class="example-section">
             <h6 class="font-medium text-gray-800 mb-2">Accessing by index:</h6>
-            <div class="code-example">
-              <code>let five_hundred = tup.0;<br>let six_point_four = tup.1;</code>
-            </div>
+            <HighlightedCodeExample 
+              code={`let five_hundred = tup.0;\nlet six_point_four = tup.1;`}
+              language="rust"
+              showLineNumbers={false}
+            />
           </div>
           
           <div class="example-section">
             <h6 class="font-medium text-gray-800 mb-2">Unit tuple (empty):</h6>
-            <div class="code-example">
-              <code>let unit = (); // Represents "no value"</code>
-            </div>
+            <HighlightedCodeExample 
+              code={'let unit = (); // Represents "no value"'}
+              language="rust"
+              showLineNumbers={false}
+            />
           </div>
         </div>
       </div>
@@ -269,23 +285,29 @@
         <div class="space-y-4">
           <div class="example-section">
             <h6 class="font-medium text-gray-800 mb-2">Creating arrays:</h6>
-            <div class="code-example">
-              <code>let a = [1, 2, 3, 4, 5];<br>let b: [i32; 5] = [1, 2, 3, 4, 5];</code>
-            </div>
+            <HighlightedCodeExample 
+              code={`let a = [1, 2, 3, 4, 5];\nlet b: [i32; 5] = [1, 2, 3, 4, 5];`}
+              language="rust"
+              showLineNumbers={false}
+            />
           </div>
           
           <div class="example-section">
             <h6 class="font-medium text-gray-800 mb-2">Initialize with same value:</h6>
-            <div class="code-example">
-              <code>let a = [3; 5]; // [3, 3, 3, 3, 3]</code>
-            </div>
+            <HighlightedCodeExample 
+              code="let a = [3; 5]; // [3, 3, 3, 3, 3]"
+              language="rust"
+              showLineNumbers={false}
+            />
           </div>
           
           <div class="example-section">
             <h6 class="font-medium text-gray-800 mb-2">Accessing elements:</h6>
-            <div class="code-example">
-              <code>let first = a[0];<br>let second = a[1];</code>
-            </div>
+            <HighlightedCodeExample 
+              code={`let first = a[0];\nlet second = a[1];`}
+              language="rust"
+              showLineNumbers={false}
+            />
           </div>
           
           <div class="warning-box">
@@ -302,16 +324,22 @@
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div class="inference-section">
           <h5 class="font-medium text-gray-800 mb-3">Explicit Type Annotation</h5>
-          <div class="code-example mb-3">
-            <code>let x: i32 = 5;<br>let y: f64 = 3.14;<br>let z: bool = true;</code>
+          <div class="mb-3">
+            <HighlightedCodeExample 
+              code={`let x: i32 = 5;\nlet y: f64 = 3.14;\nlet z: bool = true;`}
+              language="rust"
+            />
           </div>
           <p class="text-sm text-gray-600">Explicitly tell Rust what type to use</p>
         </div>
         
         <div class="inference-section">
           <h5 class="font-medium text-gray-800 mb-3">Type Inference</h5>
-          <div class="code-example mb-3">
-            <code>let x = 5;      // i32 (default)<br>let y = 3.14;   // f64 (default)<br>let z = true;   // bool</code>
+          <div class="mb-3">
+            <HighlightedCodeExample 
+              code={`let x = 5;      // i32 (default)\nlet y = 3.14;   // f64 (default)\nlet z = true;   // bool`}
+              language="rust"
+            />
           </div>
           <p class="text-sm text-gray-600">Let Rust figure out the type from usage</p>
         </div>
@@ -329,24 +357,36 @@
       <div class="exercises-grid">
         <div class="exercise-card">
           <h5 class="font-medium text-gray-800 mb-2">Exercise 1: Type Annotations</h5>
-          <div class="code-example mb-3">
-            <code>let guess = "42".parse().expect("Not a number!");</code>
+          <div class="mb-3">
+            <HighlightedCodeExample 
+              code='let guess = "42".parse().expect("Not a number!");'
+              language="rust"
+              showLineNumbers={false}
+            />
           </div>
           <p class="text-sm text-gray-600">Add a type annotation to make this compile. What type should <code class="inline-code">guess</code> be?</p>
         </div>
         
         <div class="exercise-card">
           <h5 class="font-medium text-gray-800 mb-2">Exercise 2: Tuple Destructuring</h5>
-          <div class="code-example mb-3">
-            <code>let person = ("Alice", 30, true);</code>
+          <div class="mb-3">
+            <HighlightedCodeExample 
+              code='let person = ("Alice", 30, true);'
+              language="rust"
+              showLineNumbers={false}
+            />
           </div>
           <p class="text-sm text-gray-600">Extract the name, age, and married status into separate variables.</p>
         </div>
         
         <div class="exercise-card">
           <h5 class="font-medium text-gray-800 mb-2">Exercise 3: Array Operations</h5>
-          <div class="code-example mb-3">
-            <code>let months = ["Jan", "Feb", "Mar", ...];</code>
+          <div class="mb-3">
+            <HighlightedCodeExample 
+              code='let months = ["Jan", "Feb", "Mar", ...];'
+              language="rust"
+              showLineNumbers={false}
+            />
           </div>
           <p class="text-sm text-gray-600">Create an array of all 12 months and access the 4th month.</p>
         </div>
@@ -396,9 +436,6 @@
     @apply p-4 bg-white rounded border border-gray-200;
   }
 
-  .code-example {
-    @apply bg-gray-800 text-green-400 p-3 rounded font-mono text-sm;
-  }
 
   .type-variants {
     @apply mt-4;
