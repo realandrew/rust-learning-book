@@ -13,6 +13,10 @@
   function openChapter(chapterId) {
     dispatch('openChapter', chapterId);
   }
+
+  function isChapterAvailable(chapter) {
+    return chapter.sections.some(section => section.implemented);
+  }
 </script>
 
 <section bind:this={sectionElement} class="py-8">
@@ -191,11 +195,11 @@
               </div>
               <button 
                 class="text-rust-primary hover:text-rust-dark text-sm font-medium"
-                class:opacity-50={chapter.id !== 'getting-started'}
-                disabled={chapter.id !== 'getting-started'}
+                class:opacity-50={!isChapterAvailable(chapter)}
+                disabled={!isChapterAvailable(chapter)}
                 on:click={() => openChapter(chapter.id)}
               >
-                {chapter.id === 'getting-started' ? 'Start Learning →' : 'Coming Soon →'}
+                {isChapterAvailable(chapter) ? 'Start Learning →' : 'Coming Soon →'}
               </button>
             </div>
           </div>

@@ -33,7 +33,7 @@ export const chapters: Chapter[] = [
         type: 'traditional',
         icon: '⚙️',
         description: 'Learn how to install Rust and set up your development environment',
-        implemented: false
+        implemented: true
       },
       {
         id: 'hello-world',
@@ -41,7 +41,7 @@ export const chapters: Chapter[] = [
         type: 'interactive',
         icon: '👋',
         description: 'Write and run your first Rust program',
-        implemented: false
+        implemented: true
       },
       {
         id: 'cargo-intro',
@@ -49,7 +49,7 @@ export const chapters: Chapter[] = [
         type: 'visual',
         icon: '📦',
         description: 'Understand Rust\'s build system and package manager',
-        implemented: false
+        implemented: true
       }
     ]
   },
@@ -68,7 +68,7 @@ export const chapters: Chapter[] = [
         type: 'interactive',
         icon: '🔤',
         description: 'Learn about variable declarations and mutability rules',
-        implemented: false
+        implemented: true
       },
       {
         id: 'data-types',
@@ -76,7 +76,7 @@ export const chapters: Chapter[] = [
         type: 'visual',
         icon: '🔢',
         description: 'Explore Rust\'s type system with interactive examples',
-        implemented: false
+        implemented: true
       },
       {
         id: 'functions',
@@ -84,7 +84,7 @@ export const chapters: Chapter[] = [
         type: 'exercises',
         icon: '⚡',
         description: 'Practice writing and calling functions',
-        implemented: false
+        implemented: true
       },
       {
         id: 'control-flow',
@@ -92,7 +92,7 @@ export const chapters: Chapter[] = [
         type: 'interactive',
         icon: '🔀',
         description: 'Master if expressions, loops, and pattern matching',
-        implemented: false
+        implemented: true
       }
     ]
   },

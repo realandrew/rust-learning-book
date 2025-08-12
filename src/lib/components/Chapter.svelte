@@ -4,6 +4,10 @@
   import InstallationSection from './chapter-sections/InstallationSection.svelte';
   import HelloWorldSection from './chapter-sections/HelloWorldSection.svelte';
   import CargoIntroSection from './chapter-sections/CargoIntroSection.svelte';
+  import VariablesSection from './chapter-sections/VariablesSection.svelte';
+  import DataTypesSection from './chapter-sections/DataTypesSection.svelte';
+  import FunctionsSection from './chapter-sections/FunctionsSection.svelte';
+  import ControlFlowSection from './chapter-sections/ControlFlowSection.svelte';
 
   export let chapterId: string;
   
@@ -112,6 +116,16 @@
             <HelloWorldSection />
           {:else if activeSection === 2}
             <CargoIntroSection />
+          {/if}
+        {:else if chapter.id === 'common-concepts'}
+          {#if activeSection === 0}
+            <VariablesSection />
+          {:else if activeSection === 1}
+            <DataTypesSection />
+          {:else if activeSection === 2}
+            <FunctionsSection />
+          {:else if activeSection === 3}
+            <ControlFlowSection />
           {/if}
         {:else}
           <div class="text-center py-16">
