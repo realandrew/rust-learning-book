@@ -1,6 +1,7 @@
 <script lang="ts">
   import { onMount } from 'svelte';
   import HighlightedCodeExample from '../HighlightedCodeExample.svelte';
+  import CodeMirrorEditor from '../CodeMirrorEditor.svelte';
 
   let sectionElement: HTMLElement;
   let selectedTab = 'if';
@@ -76,6 +77,10 @@
     sectionElement.classList.add('fade-in');
     setTimeout(() => sectionElement.classList.remove('fade-in'), 500);
   });
+
+  function handleCodeChange(event: CustomEvent<string>) {
+    codeInput = event.detail;
+  }
 
   function switchTab(tab: string) {
     selectedTab = tab;
@@ -184,21 +189,13 @@
           <div class="code-workspace">
             <div class="editor-section">
               <div class="editor-container">
-                <div class="editor-header">
-                  <div class="flex items-center gap-2">
-                    <div class="w-3 h-3 bg-red-400 rounded-full"></div>
-                    <div class="w-3 h-3 bg-yellow-400 rounded-full"></div>
-                    <div class="w-3 h-3 bg-green-400 rounded-full"></div>
-                  </div>
-                  <span class="text-sm text-gray-500">control_flow.rs</span>
-                </div>
-                
-                <textarea
-                  bind:value={codeInput}
-                  class="code-editor"
+                <CodeMirrorEditor 
+                  bind:code={codeInput}
+                  language="rust"
                   placeholder="Experiment with control flow..."
-                  rows="15"
-                ></textarea>
+                  fileName="control_flow.rs"
+                  on:change={handleCodeChange}
+                />
                 
                 <div class="editor-actions">
                   <button on:click={runCode} disabled={isRunning} class="run-button">
@@ -535,13 +532,6 @@ let mut b = 1;
     @apply bg-gray-800 rounded-lg overflow-hidden;
   }
 
-  .editor-header {
-    @apply flex items-center justify-between px-4 py-2 bg-gray-700;
-  }
-
-  .code-editor {
-    @apply w-full bg-gray-800 text-green-400 font-mono text-sm p-4 border-none outline-none resize-none;
-  }
 
   .editor-actions {
     @apply flex gap-2 p-3 bg-gray-700;

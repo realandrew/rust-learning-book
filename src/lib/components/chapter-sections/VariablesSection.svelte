@@ -1,6 +1,7 @@
 <script lang="ts">
   import { onMount } from 'svelte';
   import HighlightedCodeExample from '../HighlightedCodeExample.svelte';
+  import CodeMirrorEditor from '../CodeMirrorEditor.svelte';
 
   let sectionElement: HTMLElement;
   let codeInput = `fn main() {
@@ -23,6 +24,10 @@
     sectionElement.classList.add('fade-in');
     setTimeout(() => sectionElement.classList.remove('fade-in'), 500);
   });
+
+  function handleCodeChange(event: CustomEvent<string>) {
+    codeInput = event.detail;
+  }
 
   function runCode() {
     isRunning = true;
@@ -69,21 +74,13 @@
     <div class="content-card">
       <h4 class="text-xl font-semibold text-gray-800 mb-4">Try Variables</h4>
       <div class="editor-container">
-        <div class="editor-header">
-          <div class="flex items-center gap-2">
-            <div class="w-3 h-3 bg-red-400 rounded-full"></div>
-            <div class="w-3 h-3 bg-yellow-400 rounded-full"></div>
-            <div class="w-3 h-3 bg-green-400 rounded-full"></div>
-          </div>
-          <span class="text-sm text-gray-500">variables.rs</span>
-        </div>
-        
-        <textarea
-          bind:value={codeInput}
-          class="code-editor"
+        <CodeMirrorEditor 
+          bind:code={codeInput}
+          language="rust"
           placeholder="Experiment with variables..."
-          rows="12"
-        ></textarea>
+          fileName="variables.rs"
+          on:change={handleCodeChange}
+        />
         
         <div class="editor-actions">
           <button on:click={runCode} disabled={isRunning} class="run-button">
@@ -306,20 +303,9 @@
     @apply lg:col-span-2;
   }
 
-  .editor-container {
-    @apply bg-gray-800 rounded-lg overflow-hidden;
-  }
-
-  .editor-header {
-    @apply flex items-center justify-between px-4 py-2 bg-gray-700;
-  }
-
-  .code-editor {
-    @apply w-full bg-gray-800 text-green-400 font-mono text-sm p-4 border-none outline-none resize-none;
-  }
 
   .editor-actions {
-    @apply flex gap-2 p-3 bg-gray-700;
+    @apply flex gap-2 p-3 bg-gray-700 rounded-b-lg;
   }
 
   .run-button {
@@ -398,4 +384,5 @@
   .exercise-card {
     @apply p-4 bg-white rounded border border-gray-200;
   }
+
 </style>
