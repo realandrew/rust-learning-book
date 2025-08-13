@@ -1,5 +1,6 @@
 <script>
   import { onMount } from 'svelte';
+  import HighlightedCodeExample from './HighlightedCodeExample.svelte';
 
   let sectionElement;
 
@@ -17,12 +18,20 @@
         <h3 class="text-xl text-rust-primary mb-4 font-semibold">Basic Syntax</h3>
         <div class="text-left">
           <h4 class="mb-2 text-gray-800 font-medium">Variables</h4>
-          <pre class="bg-code-bg text-gray-200 p-3 rounded font-mono text-sm overflow-x-auto mb-4">let x = 5;          // immutable
-let mut y = 10;     // mutable</pre>
+          <HighlightedCodeExample 
+            code={`let x = 5;          // immutable
+let mut y = 10;     // mutable`}
+            language="rust"
+            showLineNumbers={true}
+          />
           <h4 class="mb-2 text-gray-800 font-medium">Functions</h4>
-          <pre class="bg-code-bg text-gray-200 p-3 rounded font-mono text-sm overflow-x-auto">fn function_name(param: Type) -&gt; ReturnType &#123;
+          <HighlightedCodeExample 
+            code={`fn function_name(param: Type) -> ReturnType {
     // function body
-&#125;</pre>
+}`}
+            language="rust"
+            showLineNumbers={true}
+          />
         </div>
       </div>
       
