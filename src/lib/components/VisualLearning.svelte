@@ -64,11 +64,50 @@
                   </div>
                 </div>
               {:else if section.id === 'data-types'}
-                <div class="flex items-center justify-center h-32 bg-gray-50 rounded-lg border-2 border-dashed border-gray-300">
-                  <div class="text-center">
-                    <div class="text-2xl mb-2">🔢</div>
-                    <div class="text-sm text-gray-500">Type System Overview</div>
-                    <div class="text-xs text-gray-400 mt-1">Coming Soon</div>
+                <div class="data-types-visual">
+                  <div class="types-overview">
+                    <div class="type-category">
+                      <h4 class="text-sm font-semibold text-gray-800 mb-2">📊 Scalar Types</h4>
+                      <div class="scalar-types">
+                        <div class="type-item integer">
+                          <span class="type-name">Integer</span>
+                          <span class="type-example">i32, u32, i64...</span>
+                        </div>
+                        <div class="type-item float">
+                          <span class="type-name">Float</span>
+                          <span class="type-example">f32, f64</span>
+                        </div>
+                        <div class="type-item boolean">
+                          <span class="type-name">Bool</span>
+                          <span class="type-example">true, false</span>
+                        </div>
+                        <div class="type-item character">
+                          <span class="type-name">Char</span>
+                          <span class="type-example">'a', '🦀'</span>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <div class="type-category">
+                      <h4 class="text-sm font-semibold text-gray-800 mb-2">📦 Compound Types</h4>
+                      <div class="compound-types">
+                        <div class="type-item tuple">
+                          <span class="type-name">Tuple</span>
+                          <span class="type-example">(i32, f64, char)</span>
+                        </div>
+                        <div class="type-item array">
+                          <span class="type-name">Array</span>
+                          <span class="type-example">[i32; 5]</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div class="type-size-demo">
+                    <div class="size-bar integer-size" title="Integer: 4 bytes (i32)"></div>
+                    <div class="size-bar float-size" title="Float: 8 bytes (f64)"></div>
+                    <div class="size-bar bool-size" title="Boolean: 1 byte"></div>
+                    <div class="size-bar char-size" title="Char: 4 bytes (UTF-8)"></div>
                   </div>
                 </div>
               {:else if section.id === 'ownership-rules'}
@@ -163,5 +202,82 @@
 
   .workflow-arrow-visual {
     @apply text-rust-primary text-lg font-bold;
+  }
+
+  /* Data Types Visual Styling */
+  .data-types-visual {
+    @apply space-y-4;
+  }
+
+  .types-overview {
+    @apply space-y-3;
+  }
+
+  .type-category {
+    @apply p-3 bg-gray-50 rounded-lg border border-gray-200;
+  }
+
+  .scalar-types, .compound-types {
+    @apply grid grid-cols-2 gap-2;
+  }
+
+  .type-item {
+    @apply flex flex-col items-center p-2 rounded-md text-center transition-all duration-200 hover:scale-105;
+  }
+
+  .type-item.integer {
+    @apply bg-blue-100 border border-blue-200 text-blue-800;
+  }
+
+  .type-item.float {
+    @apply bg-green-100 border border-green-200 text-green-800;
+  }
+
+  .type-item.boolean {
+    @apply bg-purple-100 border border-purple-200 text-purple-800;
+  }
+
+  .type-item.character {
+    @apply bg-pink-100 border border-pink-200 text-pink-800;
+  }
+
+  .type-item.tuple {
+    @apply bg-orange-100 border border-orange-200 text-orange-800;
+  }
+
+  .type-item.array {
+    @apply bg-yellow-100 border border-yellow-200 text-yellow-800;
+  }
+
+  .type-name {
+    @apply font-semibold text-xs;
+  }
+
+  .type-example {
+    @apply text-xs font-mono opacity-75 mt-1;
+  }
+
+  .type-size-demo {
+    @apply flex items-end gap-1 p-3 bg-gray-50 rounded-lg border border-gray-200;
+  }
+
+  .size-bar {
+    @apply rounded-t transition-all duration-300 hover:opacity-80 cursor-pointer;
+  }
+
+  .size-bar.integer-size {
+    @apply bg-blue-400 w-8 h-8;
+  }
+
+  .size-bar.float-size {
+    @apply bg-green-400 w-8 h-12;
+  }
+
+  .size-bar.bool-size {
+    @apply bg-purple-400 w-8 h-2;
+  }
+
+  .size-bar.char-size {
+    @apply bg-pink-400 w-8 h-8;
   }
 </style>
